@@ -12,9 +12,8 @@ void printBoard() {
     cout << board[7] << " | " << board[8] << " | " << board[9] << endl;
 }
 
- char checkWin() {
+char checkWin() {
     int lines[8][3] = {
-
         {1,2,3},{4,5,6},{7,8,9},
         {1,4,7},{2,5,8},{3,6,9},
         {1,5,9},{3,5,7}
@@ -43,13 +42,13 @@ int main() {
     char winner = ' ';
     int moveCount = 0;
 
-     do {
+    do {
         printBoard();
-        cout << "igrok " << currentPlayer << ", vvediKletku (1-9): ";
+        cout << "Player " << currentPlayer << ", enter cell (1-9): ";
         cin >> move;
 
         if (move < 1 || move > 9 || board[move] == 'X' || board[move] == 'O') {
-            cout << "nizya" << endl;
+            cout << "Invalid move, try again" << endl;
             continue;
         }
 
@@ -63,13 +62,13 @@ int main() {
 
     } while (winner == ' ' && moveCount < 9);
 
-        printBoard();
+    printBoard();
 
-        if (winner != ' ') {
-            cout << "dinner dinner chicken dinner:" << winner << "!" << endl;
-        } else {
-            cout << "draw" << endl;
-        }
-        
+    if (winner != ' ') {
+        cout << "Player " << winner << " wins" << endl;
+    } else {
+        cout << "draw!" << endl;
+    }
+
     return 0;
- }
+}
